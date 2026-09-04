@@ -1,0 +1,70 @@
+# ============================================================
+# Job Tracker Agent — Configuration
+# Edit this file with your details. No paid services required.
+# ============================================================
+
+# Your Gmail address (digests, cover letters, and reminders go here)
+user_email: "vermadeep994@gmail.com"
+
+# Roles you care about. Matching is case-insensitive and checks
+# job title + snippet for ANY of these phrases.
+keywords:
+  - "software engineer"
+  - "backend engineer"
+  - "back-end engineer"
+  - "sde intern"
+  - "software engineer intern"
+  - "swe intern"
+  - "sde-1"
+  - "sde 1"
+  - "java developer"
+  - "spring boot developer"
+  - "junior software engineer"
+  - "remote software engineer"
+  - "us-based software engineer"
+  - "junior backend engineer"
+  - "entry-level software engineer"
+  - "entry-level backend engineer"
+  - "software developer"
+# Words that auto-reject a listing even if a keyword matches
+# (e.g. avoid senior/staff roles if you're early career)
+exclude_keywords:
+  - "senior"
+  - "staff engineer"
+  - "principal engineer"
+  - "10+ years"
+
+# Optional: only keep roles mentioning these locations/terms.
+# Leave empty [] to disable location filtering.
+location_filters: []
+  # - "remote"
+  # - "bangalore"
+  # - "united states"
+  # - "delhi"
+  # - "india"
+  # - "hyderabad"
+  # - "chennai"
+  # - "pune"
+  # -"remote india"
+# Free job sources to pull from (toggle on/off)
+sources:
+  gmail_job_alerts: true   # reads LinkedIn/Indeed "Job Alert" emails already in your inbox
+  remoteok: true           # https://remoteok.com — free public API
+  weworkremotely: true     # https://weworkremotely.com — free RSS
+  hn_hiring: true          # Hacker News "Who is Hiring" threads — free Algolia API
+
+# How many days after "Applied" to send a follow-up reminder
+follow_up_days: 7
+
+# ------------------------------------------------------------
+# Cover letter template variables — fill these in once.
+# ------------------------------------------------------------
+candidate:
+  name: "Deep Verma"
+  headline: "Software Engineer | Backend Development | Java"
+  key_skills:
+    - "Python, Java, and REST API design"
+    - "SQL/NoSQL databases (PostgreSQL, MongoDB)"
+    - "Building and scaling backend services"
+  education: "B.Tech in Computer Science, [AKTUU], [2026 -2030]"
+
