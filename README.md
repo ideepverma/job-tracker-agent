@@ -121,11 +121,5 @@ tiers), that's a small add-on — ask and it can be wired in using their
 free-tier REST APIs with your own API key.
 
 ## Notes & honest limitations
-
-- LinkedIn does not offer a free scraping-safe job search API, so this
-  agent does **not** scrape LinkedIn directly — it reads the job alert
-  emails LinkedIn sends you instead, which is fully within their ToS.
-- Cover letters are drafts to personalize and review before sending —
-  always read them before submitting an application.
 - Everything (job data, cover letters, your resume snippets) stays on
   your own machine in `data/jobs.db`.
