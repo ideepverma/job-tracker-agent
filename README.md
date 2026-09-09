@@ -118,7 +118,7 @@ template — still $0, nothing sent to any paid API.
 The core tracker uses local SQLite so it works with zero signups. If
 you'd like a synced Airtable or Notion view later (both have free
 tiers), that's a small add-on — ask and it can be wired in using their
-free-tier REST APIs with your own API keys.
+free-tier REST APIs with your own API key.
 
 ## Notes & honest limitations
 - Everything (job data, cover letters, your resume snippets) stays on
