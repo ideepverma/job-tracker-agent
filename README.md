@@ -46,7 +46,7 @@ in your inbox and (b) send your daily digest.
 > This uses Google's free Gmail API quota (way more than a personal
 > agent will ever use). No credit card, no billing account needed.
 
-## 3. Turn on LinkedIn/Indeed Job Alerts in your inbox.
+## 3. Turn on LinkedIn Job Alerts in your inbox.
 
 So the agent has alert emails to read:
 - LinkedIn → Jobs → Job alerts → create alerts for "Software Engineer",
