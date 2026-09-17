@@ -23,8 +23,20 @@ RUN_SECRET = os.environ.get("RUN_SECRET", "")
 _last_run_status = {"state": "never run"}
 
 
+def _get_token_from_request():
+    """
+    Accepts BOTH ?token=... and ?key=... so old cron jobs configured
+    with ?key=... keep working while you migrate everything to ?token=.
+    FIX: This was the main cause of your cron failures — the cron job
+    was calling /run?key=..., but the code only checked "token", so
+    verify your cron-job.org URL uses ?token=... going forward.
+    """
+    return request.args.get("token") or request.args.get("key")
+
+
 def _check_token():
-    return RUN_SECRET and request.args.get("token") == RUN_SECRET
+    incoming = _get_token_from_request()
+    return bool(RUN_SECRET) and incoming == RUN_SECRET
 
 
 def _run_job_safely():
@@ -50,6 +62,11 @@ def run_endpoint():
     if not _check_token():
         return jsonify({"error": "unauthorized"}), 403
 
+    # FIX: Work happens in a background thread. The HTTP response below
+    # is returned immediately and stays tiny ({"status": "started"}),
+    # so cron-job.org never sees a large body and "output too large"
+    # can't happen here anymore — as long as this is the code actually
+    # deployed on Render (redeploy after pushing this file!).
     thread = threading.Thread(target=_run_job_safely, daemon=True)
     thread.start()
     return jsonify({"status": "started"})
@@ -80,7 +97,7 @@ def dashboard():
         return Response("Unauthorized. Add ?token=YOUR_RUN_SECRET to the URL.", status=403)
 
     jobs = db.list_all(limit=100)
-    token = request.args.get("token")
+    token = _get_token_from_request()
 
     rows_html = ""
     if not jobs:
